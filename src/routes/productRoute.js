@@ -1,10 +1,14 @@
 import express from "express"
-import { createProduct, getCollection } from "../controllers/productController.js";
+import { createProduct, deleteProduct, getProductById, getProducts, updateProduct } from "../controllers/productController.js";
 
 const router = express.Router();
 
-router.get('/product',getCollection)
+router.get('/product',getProducts)
 router.post('/product', createProduct);
+router.get('/product', getProductById);
+router.get('/product', updateProduct);
+router.get('/product', deleteProduct);
+
 
 router.get('/product/category', (req, res)=>{
     res.status(200).json({
