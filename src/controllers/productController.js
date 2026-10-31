@@ -117,7 +117,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
     { $set: updateFields },
   );
   if (result.matchedCount === 0) {
-    throw new ApiError(404, "Product not found");
+    throw new ApiError(404, "Product not found!");
   }
   const updatedProduct = await getCollection().findOne({
     _id: new ObjectId(id),
@@ -135,16 +135,16 @@ export const deleteProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!ObjectId.isValid(id)) {
-    throw new ApiError(400, "Invalid MongoDB Object format");
+    throw new ApiError(400, "Invalid MongoDB Object format!");
   }
   const result = await getCollection().deleteOne({
     _id: new ObjectId(id),
   });
   if (result.deletedCount === 0) {
-    throw new ApiError(404, "Product not found");
+    throw new ApiError(404, "Product not found!");
   }
   res.status(200).json({
     success: true,
-    message: "Product deleted successfully",
+    message: "Product deleted successfully!",
   });
 });
